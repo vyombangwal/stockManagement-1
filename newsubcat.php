@@ -15,14 +15,14 @@ if ($conn->connect_error) {
 <head>
 	</head>
 	<title>
+		 <?php echo $selected_val; ?>
 	</title>
 	<body>
-
-	<?php
+<?php
 	$sql="show tables";
 	$result=mysqli_query($conn,$sql);
 	?>
-
+<form action="newsubcatcreated.php" method="POST">
 	<select name="cat">
 	<?php
 	if(mysqli_num_rows($result)>0){
@@ -36,15 +36,16 @@ if ($conn->connect_error) {
 			</select><?php
 		
 	}
+	?>
+	ENTER NAME:<input type="text" name="subcatname" required><br>
+	ENTER QUAN:<input type="text" name="subcatquan" required><br>
+	<input type="submit" name="submit">	
+	
+</form>
 
-	?>	
 
-	WANT TO ADD A NEW CATEGORY??<br>	
-	<form action="newcat.php" method="POST">
-		<input type="submit" value="Create">
-	</form>
-	<br><br>
-	<a href="newsubcat.php"><button>WANT TO ADD NEW SUBCATEGORY?</button></a>
+
+
 
 	</body>
 	</html>
