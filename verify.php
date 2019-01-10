@@ -21,7 +21,7 @@ $result = mysqli_query($conn,$sql);
 $count= mysqli_num_rows($result);
 if($count>0)
 {
-	header('Location: Stock.php');
+	header('Location: index.php');
 }
 else
 {

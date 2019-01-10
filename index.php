@@ -17,18 +17,19 @@ background: url(bg.jpg) no-repeat center center/cover;
 }
 @keyframes exp
 {
-	0%{color:rgba(0,0,0,0); margin-right:-50px; }
-	10%{color:rgba(255,255,255,1); margin-right:0px; }
-	100%{color:rgba(255,255,255,1); margin-right:0px; }
+	0%{color:rgba(0,0,0,0); margin-left:-150px; }
+	10%{color:rgba(255,255,255,1); margin-left:0px; }
+	100%{color:rgba(255,255,255,1); margin-left:0px; }
 }
 	</style>
 </head>
 <body>
 	<?php
 	include 'navbar.php'
+	
 	?>
     <div class="" style="padding-top:;" >
-    	<div class="bg1" style="height: 70em; width: 100%; ">
+    	<div class="bg1" style="height: 40em; width: 100%; ">
     		
   <div class="container">
                <br/>
@@ -49,6 +50,7 @@ background: url(bg.jpg) no-repeat center center/cover;
 	?>
 
   <select class="form-control" id="sel1" name="category">
+  	 <option value="" disabled selected>select category</option>
   	<?php
 	if(mysqli_num_rows($result)>0){
 		while($row= mysqli_fetch_row($result)){
@@ -69,6 +71,7 @@ background: url(bg.jpg) no-repeat center center/cover;
 	?>
 
   <select class="form-control" id="sel1" name="category">
+  	 <option value="" disabled selected>select category</option>
   	<?php
 	if(mysqli_num_rows($result)>0){
 		while($row= mysqli_fetch_row($result)){
@@ -79,8 +82,8 @@ background: url(bg.jpg) no-repeat center center/cover;
     
   </select>	<?php }?>
 </div><div class="container">
- <a class="btn btn-outline-light btn-lg" style=" " href="#" title="view">View</a>
- <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="#" title="import">Import/Export</a> <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="#" title="Delete">Delete</a>
+ <a class="btn btn-outline-light btn-lg" style=" " href="view.php" title="view">View</a>
+ <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="import.php" title="import">Import/Export</a> <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="delete.php" title="Delete">Delete</a>
                
 </div></div>
 

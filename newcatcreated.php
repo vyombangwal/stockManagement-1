@@ -1,15 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="stock";
-// Create connection
-$conn = new mysqli($servername, $username, $password,$db);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'navbar.php';
 $catname=$_POST['name'];
 $sql="CREATE TABLE $catname(
 		SNO INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
