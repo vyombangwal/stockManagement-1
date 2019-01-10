@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $catname="computer";
-$subname= "mouse";
+$subname= "";
 $sql1="SELECT * FROM $catname";
 $result1=mysqli_query($conn,$sql1);
 $sql2="SELECT * FROm $catname WHERE subcat='$subname'";
@@ -30,9 +30,9 @@ $result2=mysqli_query($conn,$sql2);
       <th>Quantity</th>
     </tr><tr>
     <?php
-    	if(!($result2)){
+    	if(mysqli_num_rows($result2)==0){
     if(mysqli_num_rows($result1)>0){
-    while ($row = mysqli_fetch_array($result2))
+    while ($row = mysqli_fetch_array($result1))
     {
         ?>
         <td><?php echo $row[0];?></td>
