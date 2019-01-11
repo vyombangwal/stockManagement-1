@@ -40,6 +40,7 @@ background: url(bg.jpg) no-repeat center center/cover;
                 <br/>
                 
                <br/>
+               <form>
                <div class="form-group" style="width:40%;">
   <label for="sel1" style="font-family:bold; color: white;">Select category:</label>
 
@@ -49,7 +50,7 @@ background: url(bg.jpg) no-repeat center center/cover;
 	$result=mysqli_query($conn,$sql);
 	?>
 
-  <select class="form-control" id="sel1" name="category">
+  <select class="form-control" id="cate" name="category" onchange="myfun(this.value);">
   	 <option value="" disabled selected>select category</option>
   	<?php
 	if(mysqli_num_rows($result)>0){
@@ -64,24 +65,30 @@ background: url(bg.jpg) no-repeat center center/cover;
   <div class="form-group" style="width:40%;">
   <label for="sel1" style="font-family:bold; color: white;">Select subcategory:</label>
 
-	<?php
-	$sql="SELECT TABLE_NAME FROM information_schema.tables 
-	WHERE table_schema = 'stock' AND TABLE_NAME NOT LIKE 'users'";
-	$result=mysqli_query($conn,$sql);
-	?>
-
-  <select class="form-control" id="sel1" name="category">
+	
+  <select class="form-control" id="dataget" name="category">
   	 <option value="" disabled selected>select category</option>
   	<?php
-	if(mysqli_num_rows($result)>0){
-		while($row= mysqli_fetch_row($result)){
-
+	
 			?>
-    <option value=<?php $row[0]?>><?php echo $row[0];?></option>
-    	<?php }?>
     
-  </select>	<?php }?>
-</div><div class="container">
+    	
+    
+  </select>	
+</div></form>
+
+   <script type="text/javascript">
+   	function onchange(str) {
+  var xhttp;    
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("dataget").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "./getplayers.php?Cname="+str, true);
+  xhttp.send();}</script>
+<div class="container">
  <a class="btn btn-outline-light btn-lg" style=" " href="view.php" title="view">View</a>
  <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="import.php" title="import">Import/Export</a> <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="delete.php" title="Delete">Delete</a>
                
