@@ -8,7 +8,6 @@ background: url(bg.jpg) no-repeat center center/cover;
   background-attachment:fixed; 
   background-size:auto*1.5rem auto; 
 }
-
 #A1
 {	animation-name:exp;
 	animation-iteration-count:infinite;
@@ -22,10 +21,11 @@ background: url(bg.jpg) no-repeat center center/cover;
 	100%{color:rgba(255,255,255,1); margin-left:0px; }
 }
 	</style>
+	
 </head>
 <body>
 	<?php
-	include 'navbar.php'
+	include 'navbar.php';
 	
 	?>
     <div class="" style="padding-top:;" >
@@ -39,8 +39,7 @@ background: url(bg.jpg) no-repeat center center/cover;
                 <h1 id='A1'>WELCOME USER</h1>
                 <br/>
                 
-               <br/>
-               <form>
+               <br/>	<form method="POST">
                <div class="form-group" style="width:40%;">
   <label for="sel1" style="font-family:bold; color: white;">Select category:</label>
 
@@ -50,50 +49,58 @@ background: url(bg.jpg) no-repeat center center/cover;
 	$result=mysqli_query($conn,$sql);
 	?>
 
-  <select class="form-control" id="cate" name="category" onchange="myfun(this.value);">
-  	 <option value="" disabled selected>select category</option>
+  <select class="form-control" id="sell" name="category" onchange="myfun(this.value)">
+  	 <option disabled selected>select category</option>
   	<?php
 	if(mysqli_num_rows($result)>0){
 		while($row= mysqli_fetch_row($result)){
-
 			?>
-    <option value=<?php $row[0]?>><?php echo $row[0];?></option>
+    <option value=<?php echo $row[0]?>><?php echo $row[0]?></option>
     	<?php }?>
     
   </select>	<?php }?>
-</div>
+</div></form>
+<?php
+	
+?>
+
+
+<form method="POST">
   <div class="form-group" style="width:40%;">
   <label for="sel1" style="font-family:bold; color: white;">Select subcategory:</label>
 
-	
-  <select class="form-control" id="dataget" name="category">
-  	 <option value="" disabled selected>select category</option>
-  	<?php
-	
-			?>
-    
-    	
+  <select class="form-control" id="sell2" name="Subcategory" onchange="myfun2()">
+  	 <option value="" disabled selected>Sub-category</option>
     
   </select>	
 </div></form>
+<?php
+	
+?>
+<script type="text/javascript">
+	function myfun(datavalue){
+		$.ajax({
+			url: 'subcatindex.php',
+			type:'POST',
+			data:{datapost : datavalue},
+			success: function(result){
+					$('#sell2').html(result);
+			}
+		});
 
-   <script type="text/javascript">
-   	function onchange(str) {
-  var xhttp;    
-  xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("dataget").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "./getplayers.php?Cname="+str, true);
-  xhttp.send();}</script>
+	
+	function myfun2()
+	{
+		document.getElementById("1").href="href+datavalue"; 
+	}
+}
+</script>
 <div class="container">
- <a class="btn btn-outline-light btn-lg" style=" " href="view.php" title="view">View</a>
+ <a class="btn btn-outline-light btn-lg"  id="1" href="view.php" style=" " href="view.php" title="view">View</a>
  <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="import.php" title="import">Import/Export</a> <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="delete.php" title="Delete">Delete</a>
                
 </div></div>
-
+</form>
     	</div>
     </div>
 </body>
