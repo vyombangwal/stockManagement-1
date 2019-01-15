@@ -1,5 +1,5 @@
 <?php
-include 'navbar.php';
+include "navbar.php";
 $catname=$_POST['cat'];
 $subname=$_POST['subcatname'];
 $subquan=$_POST['subcatquan'];

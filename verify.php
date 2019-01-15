@@ -21,7 +21,7 @@ $result = mysqli_query($conn,$sql);
 $count= mysqli_num_rows($result);
 if($count>0)
 {
-	header('Location: index.php');
+	header('Location: index.php?user='.$uname);
 }
 else
 {

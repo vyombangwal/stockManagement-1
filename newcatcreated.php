@@ -1,5 +1,5 @@
 <?php
-include 'navbar.php';
+include "navbar.php";
 $catname=$_POST['name'];
 $sql="CREATE TABLE $catname(
 		SNO INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

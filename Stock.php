@@ -1,5 +1,5 @@
 <?php
-include 'navbar.php';
+include "navbar.php";
 ?>
 <html>
 <head>
@@ -30,7 +30,7 @@ include 'navbar.php';
 
 	?>	
 
-	WANT TO ADD A NEW CATEGORY?<br>	
+	WANT TO ADD A NEW CATEGORY??<br>	
 	<form action="newcat.php" method="POST">
 		<input type="submit" value="Create">
 	</form>

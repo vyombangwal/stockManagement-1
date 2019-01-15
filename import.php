@@ -1,7 +1,8 @@
 <?php
-include 'navbar.php';
-$catname="computer";
-$subname="mouse";
+include "navbar.php";
+
+$catname=$_GET['cat'];
+$subname=$_GET['subcat'];
 $sql="SELECT * FROM $catname WHERE subcat='$subname'";
 $result=mysqli_query($conn,$sql);
 
@@ -42,7 +43,7 @@ $sql2="UPDATE $catname SET quantity= quantity + $change WHERE subcat='$subname' 
 $result2=mysqli_query($conn,$sql2);
 if($change)
 {
-	header("Location:import.php");
+	header("Location:import.php?cat="+$catname+"&subcat="+$subname);
 	$change="false";
 }
         ?></td>
